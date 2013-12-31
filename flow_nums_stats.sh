@@ -1,12 +1,15 @@
 #!/bin/bash
 
-date +%s > time.log
+start_time=`date +%s` 
+echo $start_time > time.log
+
 while true
 do
     #ovs-ofctl dump-flows br0 | wc -l
     #ovs-ofctl dump-flows br0 | wc -l
     ret=`ovs-appctl -t /ovs/var/run/openvswitch/ovs-vswitchd.$1.ctl pronto/dump-flows | wc -l`
-    echo $ret
+    now_time=`date +%s`
+    echo $(($now_time-$start_time)), $ret
     if [[ $ret = 2045 ]]; then
         ovs-ofctl dump-flows br0 | tail -n 1
         date +%s >> time.log
