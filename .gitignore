@@ -36,3 +36,5 @@ nosetests.xml
 .pydevproject
 *.csv
 *.pcap
+*.log
+*.zip
