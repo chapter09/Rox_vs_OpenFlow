@@ -1,6 +1,8 @@
 % a = (1:arv);
 format long 
 
+xlabel('Number of Packets','FontSize',20);
+ylabel('RTT (ms)','FontSize',20);
 
 %log_name = ...
 %sprintf('/home/wanghao/Documents/Rox_vs_OpenFlow/matlab/data-rvo-1)',...
@@ -23,9 +25,6 @@ t2 = xlsread(data_file, sheet, t2Range);
 ofp = xlsread(data_file, sheet, ofpRange);
 rox = xlsread(data_file, sheet, roxRange);
 
-ofp = ofp * 1000;
-rox = rox * 1000;
-
 
 % data;
 
@@ -43,25 +42,20 @@ rox = rox * 1000;
 % write2file(fid, log_name,'Accp2', Accp2);
 % write2file(fid, log_name,'Accp3', Accp3);
 
-h = figure('visible', 'on');
+% h = figure('visible', 'off');
 % fig_name = ...
 % sprintf('/home/wanghao/Documents/MAT_results/%s',...
 % time_stamp);
 
-fig_name = ...
-    '/home/wanghao/Documents/Rox_vs_OpenFlow/matlab/data-rvo-1-f';
+% fig_name = ...
+%     '/home/wanghao/Documents/Rox_vs_OpenFlow/matlab/data-rvo-1-f';
 
-% scatter(t1, rox);
+figure 
 
 hold on
-plot(t1, rox,'ro-',t2,ofp,'bx-','LineWidth',1, 'MarkerSize', 6);
-xlabel('Number of Packets','FontSize',10);
-ylabel('RTT (ms)','FontSize',10);
-leg = legend('Rox', 'OpenFlow');
-
+% %plot(a,U1,'ro-',a,U2,'gs-',a,U3,'bd-','LineWidth',2.5)
 % 
-% plot(t1, rox);
-% plot(t2, ofp);
+
 % scatter(t, ofp);
 % plot(a,Util1,'ro-',...
 % a,Util2,'gs-',...
@@ -73,9 +67,9 @@ leg = legend('Rox', 'OpenFlow');
 % a,(1-Accp2),'g-.s',...
 % a,(1-Accp3),'b-.d',...
 % 'LineWidth',1)
-grid on;
-saveas(h, fig_name, 'epsc');
-
-hold off
+% grid on;
+% saveas(h, fig_name, 'epsc');
+% 
+% hold off
 
 

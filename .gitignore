@@ -38,3 +38,4 @@ nosetests.xml
 *.pcap
 *.log
 *.zip
+*.xlsx
