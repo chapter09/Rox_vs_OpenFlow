@@ -23,8 +23,8 @@ t2 = xlsread(data_file, sheet, t2Range);
 ofp = xlsread(data_file, sheet, ofpRange);
 rox = xlsread(data_file, sheet, roxRange);
 
-ofp = ofp * 1000;
-rox = rox * 1000;
+% ofp = ofp * 1000;
+% rox = rox * 1000;
 
 
 % data;
@@ -54,10 +54,21 @@ fig_name = ...
 % scatter(t1, rox);
 
 hold on
+
+box on
+
+set(gcf, 'Position', [0 0 900 400]);
+
+
 plot(t1, rox,'ro-',t2,ofp,'bx-','LineWidth',1, 'MarkerSize', 6);
 xlabel('Number of Packets','FontSize',10);
-ylabel('RTT (ms)','FontSize',10);
+ylabel('RTT (s)','FontSize',10);
 leg = legend('Rox', 'OpenFlow');
+
+set(gca, 'XTick', 0:5000:65000);
+
+% axis([0 65000 0 6]);
+% set(gca, 'xTick', 0:5000:70000);
 
 % 
 % plot(t1, rox);
@@ -74,7 +85,10 @@ leg = legend('Rox', 'OpenFlow');
 % a,(1-Accp3),'b-.d',...
 % 'LineWidth',1)
 grid on;
-saveas(h, fig_name, 'epsc');
+
+xlim([0. 65000]);
+
+saveas(gca, fig_name, 'epsc');
 
 hold off
 
